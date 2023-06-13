@@ -1,0 +1,74 @@
+var age = 35;
+let town = 'daegu';
+
+>>>
+
+ var money = 60000
+      var 미래예금액 =0
+      if (money >= 50000) {
+        var rate =0.2
+미래예금액 = money * Math.pow((1+rate),2)
+}
+else {
+var rate =0.15
+미래예금액 = money * Math.pow((1+rate),2)
+};
+
+console.log(미래예금액)
+
+>>>
+
+var first = 360
+var next =0
+
+next = first+first *2/3 + first * 2/3 *2/3
+
+console.log(next)
+
+>>>
+
+<p>태조 이성계가 태어난 년도는?</p>
+    <input type="text" id="answer">
+    <button id="send-answer">제출</button>
+    
+    <script>
+      var 시도 = 0;
+      document.getElementById("send-answer").addEventListener("click",function(){
+        var 답안 = document.getElementById("answer").value
+        시도++
+    if(답안 == 1335) {
+    alert("성공")}
+    else if (시도 >=3 && 답안 != 1335){ 
+     alert("멍청아")
+    }})</script>
+
+>>>
+
+<input type="number" id="mm"/>
+    <button type="button" id="btn-mm">현재예금액</button>
+    <input type="number" id="yy"/>
+    <button type="button" id="btn-yy">년수</button>
+    <button type="button" id="conf">확인</button>
+    
+    <script>
+      document.getElementById("conf").addEventListener("click", function(){ 
+var money = document.getElementById("mm").value
+var 년수 = document.getElementById("yy").value
+if (money >= 50000) {
+      var 미래예금액 = 0
+        var rate =0.2
+미래예금액 = money * Math.pow((1+rate),년수)
+}
+else {
+  var money = document.getElementById("mm").value
+var 년수 = document.getElementById("yy").value
+      var 미래예금액 = 0
+        var rate =0.2
+  var rate =0.15
+미래예금액 = money * Math.pow((1+rate),년수)
+};
+
+console.log(Math.round(미래예금액))});
+</script>
+
+
