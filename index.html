@@ -179,12 +179,13 @@ console.log(Math.round(미래예금액))});
         }
       });
 
-      var a = parseInt(document.getElementById("min").value)
-      var b = parseInt(document.getElementById("hung").value)
           
       document.getElementById("cc").addEventListener("click", 합격했냐);
       function 합격했냐() {
-      if(a>100) {
+      var a = parseInt(document.getElementById("min").value)
+      var b = parseInt(document.getElementById("hung").value)
+      
+        if(a>100) {
         alert("점수는 100점 이하입니다");
         return;
         }
@@ -193,8 +194,8 @@ console.log(Math.round(미래예금액))});
         return;
         }
       if (
-          a <= 40 ||
-          b <= 40 
+          a < 40 ||
+          b < 40 
           ) {
           alert("불합격")
         }
