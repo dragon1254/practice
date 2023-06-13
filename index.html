@@ -106,6 +106,20 @@
     <button type="button" id="btn-yy">년수</button>
     <button type="button" id="conf">확인</button>
     
+    <div class="alert alert-danger"><span id="tt">5</span>초 이내 구매시 사은품 증정!</div>
+    <script>
+      var timecount = 5
+      var 타이머 = setInterval(알림창,1000);
+      타이머
+      function 알림창(){
+        timecount = timecount -1;
+       if(timecount>=0) {document.getElementById("tt").innerHTML=timecount};
+if(timecount == 0){
+  $(".alert").hide()
+clearTimeout(타이머)
+};
+      }
+    </script>
     <script>
       document.getElementById("conf").addEventListener("click", function(){ 
 var money = document.getElementById("mm").value
@@ -165,26 +179,26 @@ console.log(Math.round(미래예금액))});
         }
       });
 
-      var a = document.getElementById("min").value
-      var b = document.getElementById("hung").value
+      var a = parseInt(document.getElementById("min").value)
+      var b = parseInt(document.getElementById("hung").value)
           
       document.getElementById("cc").addEventListener("click", 합격했냐);
       function 합격했냐() {
-              if(document.getElementById("min").value>100) {
+      if(a>100) {
         alert("점수는 100점 이하입니다");
         return;
-        
-      }
-              if (document.getElementById("hung").value>100) {
+        }
+      if (b>100) {
         alert("점수는 100점 이하입니다");
         return;
-      }
-        if (
-          document.getElementById("min").value <= 40 ||
-          document.getElementById("hung").value <= 40 
+        }
+      if (
+          a <= 40 ||
+          b <= 40 
           ) {
-          alert("불합격")}
-          else if(parseInt(document.getElementById("min").value) + parseInt(document.getElementById("hung").value) >=120){
+          alert("불합격")
+        }
+          else if(a+b >=120){
             alert("합격")
           }
           else {
