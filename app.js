@@ -1,3 +1,3 @@
-function open{
-    document.getElementById(alert).style.display='block';
+function open() {
+  document.getElementById("alert").style.display = "block";
 }
