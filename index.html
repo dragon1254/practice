@@ -107,6 +107,31 @@
     <button type="button" id="conf">확인</button>
     
     <div class="alert alert-danger"><span id="tt">5</span>초 이내 구매시 사은품 증정!</div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <script>
       var timecount = 5
       var 타이머 = setInterval(알림창,1000);
@@ -161,13 +186,30 @@ console.log(Math.round(미래예금액))});
         if (document.getElementById("email").value == "") {
           alert("아이디를 입력하세요");
           e.preventDefault();
-        } else if (document.getElementById("pw").value == "") {
+        } 
+       
+        
+        else if (document.getElementById("pw").value == "") {
           alert("비번을 입력하세요");
           e.preventDefault();
         } else if (document.getElementById("pw").value.length < 6) {
-          alert("더 긴 비번이 필요합니다.g");
+          alert("더 긴 비번이 필요합니다.");
           e.preventDefault();
         }
+        if(/\S+\@\S+\.\S+/.test(document.getElementById("email").value)) {
+          
+        } else {
+          alert("이메일 형식이 아닙니다")
+          e.preventDefault();
+        } 
+        if(/[A-Z]/.test(document.getElementById("pw").value)){
+       
+        } else {
+          alert("1개 이상의 대문자를 포함하세요")
+          e.preventDefault();
+        }
+        
+
       });
     </script>
     <script>
