@@ -191,15 +191,11 @@ console.log(Math.round(미래예금액))});
           alert("더 긴 비번이 필요합니다.");
           e.preventDefault();
         }
-        if(/\S+\@\S+\.\S+/.test(document.getElementById("email").value)) {
-          
-        } else {
+        if(/\S+\@\S+\.\S+/.test(document.getElementById("email").value) == false) {          
           alert("이메일 형식이 아닙니다")
           e.preventDefault();
         } 
-        if(/[A-Z]/.test(document.getElementById("pw").value)){
-       
-        } else {
+        if(/[A-Z]/.test(document.getElementById("pw").value)==false){
           alert("1개 이상의 대문자를 포함하세요")
           e.preventDefault();
         }
