@@ -96,10 +96,12 @@
 .slide-box img {
   width: 100%;
 }
-.shift {
-  transform: translateX(-100vw);
+.navbar {
+  position : fixed;
+  width : 100%;
+  z-index : 5
 }
-.double-shift {
-  transform: translateX(-200vw);
-
+.navbar-brand {
+  font-size : 30px;
+  transition : all 1s;
 }
