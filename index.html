@@ -108,8 +108,63 @@
     
     <div class="alert alert-danger"><span id="tt">5</span>초 이내 구매시 사은품 증정!</div>
 
- <p>클론 연습</p>
+    <div style="overflow: hidden;">
+ <div class="slide-container">
+  <div class="slide-box">
+    <img src="car1.png">
+  </div>
 
+  <div class="slide-box">
+        <img src="car2.png">
+
+  </div>
+  <div class="slide-box">
+        <img src="car3.png">
+      </div>
+      
+    </div>
+</div>
+<button class="slide-1">1</button>
+      <button class="slide-2">2</button>
+      <button class="slide-3">3</button>
+      <button class="next">next</button>
+      <button class="before">before</button>
+
+<script>
+  // document.querySelector(".slide-2").addEventListener("click", function(){
+  //   document.querySelector(".slide-container").style.transform="translateX(-100vw)";
+  // })
+  // document.querySelector(".slide-3").addEventListener("click", function(){
+  //   document.querySelector(".slide-container").style.transform="translateX(-200vw)";
+  // })
+  // document.querySelector(".slide-1").addEventListener("click", function(){
+  //   document.querySelector(".slide-container").style.transform="translateX(0vw)";
+  // }) 바닐라 자바스크립트. 아래는 jQuery
+  $(".slide-2").on("click", function(){
+    $(".slide-container").css("transform", "translateX(-100vw)");
+  })
+  $(".slide-3").on("click", function(){
+    $(".slide-container").css("transform", "translateX(-200vw)");
+  })
+  $(".slide-1").on("click", function(){
+    $(".slide-container").css("transform", "translateX(0vw)");
+  })
+
+  var slide = 0
+  $(".next").on("click", function(){
+    slide +=1
+    if (slide >2){
+slide = 0  }
+$(".slide-container").css("transform", "translateX(-" + slide + "00vw)")
+
+})
+$(".before").on("click", function(){
+    $(".slide-container").css("transform", "translateX(-" + 지금사진 + "00vw)")
+  지금사진 -=1
+if (지금사진 <0)
+지금사진 = 2  
+})
+</script>
 
 
     
