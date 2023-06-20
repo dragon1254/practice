@@ -140,29 +140,51 @@
   // document.querySelector(".slide-1").addEventListener("click", function(){
   //   document.querySelector(".slide-container").style.transform="translateX(0vw)";
   // }) 바닐라 자바스크립트. 아래는 jQuery
+  var slide =1;
+
   $(".slide-2").on("click", function(){
     $(".slide-container").css("transform", "translateX(-100vw)");
+    slide =2;
   })
   $(".slide-3").on("click", function(){
     $(".slide-container").css("transform", "translateX(-200vw)");
+  slide =3;
   })
   $(".slide-1").on("click", function(){
     $(".slide-container").css("transform", "translateX(0vw)");
+  slide=1;
   })
-
-  var slide = 0
   $(".next").on("click", function(){
-    slide +=1
-    if (slide >2){
-slide = 0  }
-$(".slide-container").css("transform", "translateX(-" + slide + "00vw)")
-
+if (slide ==1){
+$(".slide-container").css("transform", "translateX(-" + slide + "00vw)");
+slide+=1;
+}
+else if (slide ==2){
+$(".slide-container").css("transform", `translateX(-${slide}00vw)`);
+slide+=1;
+}
+else if (slide >2){
+$(".slide-container").css("transform", "translateX(-00vw)");
+slide=1;
+}
 })
 $(".before").on("click", function(){
-    $(".slide-container").css("transform", "translateX(-" + 지금사진 + "00vw)")
-  지금사진 -=1
-if (지금사진 <0)
-지금사진 = 2  
+  if (slide ==1){
+    slide+=1;
+    $(".slide-container").css("transform", "translateX(-" + slide + "00vw)");
+  slide +=1;
+  }
+  else if (slide==2){
+    slide -=2;
+    $(".slide-container").css("transform", "translateX(-00vw)");
+    slide +=1
+}
+else if (slide ==3){
+  slide -=2;
+  $(".slide-container").css("transform", "translateX(-" + slide + "00vw)");
+slide +=1;
+}
+
 })
 </script>
 
