@@ -130,6 +130,18 @@
       <button class="next">next</button>
       <button class="before">before</button>
 
+
+
+
+
+
+
+
+
+
+
+
+
 <script>
   // document.querySelector(".slide-2").addEventListener("click", function(){
   //   document.querySelector(".slide-container").style.transform="translateX(-100vw)";
@@ -173,22 +185,18 @@ $(".before").on("click", function(){
     $(".slide-container").css("transform", "translateX(-"+(slide-1)+"00vw");
 }
 })
+
+function 함수(a,b) {
+  var c = a * 0.9
+  if (b == true) {
+c = c -1.5
+  }
+  return parseFloat(c.toFixed(1))
+}
+
 </script>
-
-
     
-
-
-
-
-
-
-
-
-
-
-
-    <script>
+<script>
       var timecount = 5
       var 타이머 = setInterval(알림창,1000);
       타이머
