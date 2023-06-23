@@ -152,7 +152,7 @@ window.addEventListener("scroll", function(){
     $(".navbar-brand").css("font-size",20);
   }
   else if(스크롤내린양 < 100) {
-    // document.querySelector(".navbar-brand").style.fontsize="30px";
+    // document.querySelector(".navbar-brand").style.fontSize="30px";
     $(".navbar-brand").css("font-size",30);
   
 }})
@@ -160,22 +160,23 @@ window.addEventListener("scroll", function(){
 
 // div의 스크롤바 내린 양 + 눈에 보이는 div높이 == div 의 실제 높이
 
-  $(".lorem").on("scroll", function(){
+var d = 0;
+
+$(".lorem").on("scroll", function(){
     // 스크롤 바 내린 양
   var a = document.querySelector(".lorem").scrollTop;
   // div 실제 높이
   var b = document.querySelector(".lorem").scrollHeight;
 // 눈에 보이는 div 높이
   var c = document.querySelector(".lorem").clientHeight;
-  var d = 0;
   if (b-c-a<10) {
     if(d == 0) {
       alert("다 읽으셨습니다");
+      d = 1;
+
     }
   }
-  d = 1;
-    
-}
+  }
     
 )
 $(window).on("scroll",function(){
