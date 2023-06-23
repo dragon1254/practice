@@ -110,7 +110,7 @@
   transition : all 1s;
 }
 .prg {
-  width: 10vw;
+  width: 0vw;
   background-color: black; 
   height: 1px;
 }
