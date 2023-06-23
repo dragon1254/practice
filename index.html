@@ -36,15 +36,13 @@
        
     <nav class="navbar navbar-light bg-light">
       <div class="container-fluid">
-        <span class="navbar-brand">Jsshop</span>
+        <span class="navbar-brand" style="font-size: 30px;">Jsshop</span>
         <span class="ms-auto mx-3 badge bg-dark">Dark 🔄</span>
         <button class="navbar-toggler" type="button">
           <span class="navbar-toggler-icon"></span>
           
         </button>
       </div>
-      
-    
     </nav>
     <ul class="list-group">
       <li class="list-group-item">An item</li>
@@ -139,8 +137,44 @@
   </div>
 </div>
 
+<div style="height: 1000px;"></div>
+
+<div class="lorem" style="width: 200px; height: 100px; overflow-y: scroll">
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae voluptas voluptatum minus praesentium fugit debitis at, laborum ipsa itaque placeat sit, excepturi eius. Nostrum perspiciatis, eligendi quae consectetur praesentium exercitationem.
+</div>  
+<script>
+// 스크롤바 100px 내리면 로고 폰트 사이즈 작게
+window.addEventListener("scroll", function(){
+  var 스크롤내린양 = $(window).scrollTop();
+  // 자바스크립트 var 스크롤내린양 = window.scrollY 
+  if(스크롤내린양 >= 100) {
+    $(".navbar-brand").css("font-size",20);
+  }
+  else if(스크롤내린양 < 100) {
+    // document.querySelector(".navbar-brand").style.fontsize="30px";
+    $(".navbar-brand").css("font-size",30);
+  
+}})
 
 
+// div의 스크롤바 내린 양 + 눈에 보이는 div높이 == div 의 실제 높이
+
+  $(".lorem").on("scroll", function(){
+    // 스크롤 바 내린 양
+  var a = document.querySelector(".lorem").scrollTop;
+  // div 실제 높이
+  var b = document.querySelector(".lorem").scrollHeight;
+// 눈에 보이는 div 높이
+  var c = document.querySelector(".lorem").clientHeight;
+  var d = 0;
+  if (b-c-a<10) {
+    if(d == 0) {
+      alert("다 읽으셨습니다");
+    d = 1;
+    }
+  }
+})
+</script>
 
 
 
