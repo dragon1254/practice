@@ -39,10 +39,11 @@
         <span class="navbar-brand" style="font-size: 30px;">Jsshop</span>
         <span class="ms-auto mx-3 badge bg-dark">Dark 🔄</span>
         <button class="navbar-toggler" type="button">
-          <span class="navbar-toggler-icon"></span>
-          
+          <span class="navbar-toggler-icon"></span>    
         </button>
       </div>
+      <div class="prg"></div>
+    
     </nav>
     <ul class="list-group">
       <li class="list-group-item">An item</li>
@@ -173,6 +174,14 @@ window.addEventListener("scroll", function(){
     d = 1;
     }
   }
+})
+$(window).on("scroll",function(){
+  // document.querySelector("html") == document.documentElement
+  var 웹페높 = document.querySelector("html").scrollHeight
+  var 웹페롤 = document.querySelector("html").scrollTop
+  var 웹페보 = document.querySelector("html").clientHeight
+  var 퍼센트 = 웹페롤/(웹페높-웹페보) *100
+  $(".prg").width(퍼센트+"%")
 })
 </script>
 

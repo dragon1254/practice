@@ -109,3 +109,8 @@
   font-size : 30px;
   transition : all 1s;
 }
+.prg {
+  width: 10vw;
+  background-color: black; 
+  height: 1px;
+}
