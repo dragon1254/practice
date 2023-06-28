@@ -18,7 +18,7 @@
     ></script>
   </head>
   <body  id="fst">
-    <!-- <div class="black-bg">
+    <div class="black-bg">
       <div class="white-bg">
         <form action="success.html">
           <div class="my-3">
@@ -32,7 +32,7 @@
           <button type="button" class="btn btn-danger" id="close">닫기</button>
         </form>
       </div>
-    </div> -->
+    </div>
        
     <nav class="navbar navbar-light bg-light">
       <div class="container-fluid">
@@ -414,11 +414,19 @@ for(var j = 0; j < btns.length; j++) {
  
  
 //Modal 영역 밖을 클릭하면 Modal을 닫습니다.
-window.onclick = function(event) {
-  if (event.target.className == "modal") {
-      event.target.style.display = "none";
-  }
-};
+// window.onclick = function(event) {
+//   if (event.target.className == "modal") {
+//       event.target.style.display = "none";
+//   }
+// };
+
+// 모달창 검은 부분 누르면 창 닫히게
+
+
+document.querySelector(".modal").addEventListener("click", function(e){
+  if(e.target.className =="modal"){
+    document.querySelector(".modal").style.display="none"
+}});
     </script>
   </body>
 </html>
