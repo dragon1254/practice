@@ -414,20 +414,21 @@ for(var j = 0; j < btns.length; j++) {
  
  
 //Modal 영역 밖을 클릭하면 Modal을 닫습니다.
-window.onclick = function(event) {
-  if (event.target.className == "modal") {
-      event.target.style.display = "none";
-  }
-};
+// window.onclick = function(event) {
+//   if (event.target.className == "modal") {
+//       event.target.style.display = "none";
+//   }
+// };
 
 // 모달창 검은 부분 누르면 창 닫히게
 
-
-// document.querySelector(".modal").addEventListener("click", function(e){
-//   if(e.target.className =="modal"){
-//     e.target.style.display = "none";
-//     document.querySelector(".modal").style.display="none"
-// }});
+for (let t=0; t<2; t++) {
+document.querySelectorAll(".modal")[t].addEventListener("click", function(e){
+  if(e.target.className =="modal"){
+    e.target.style.display = "none";
+    document.querySelectorAll(".modal")[t].style.display="none"
+}});
+}
     </script>
   </body>
 </html>
