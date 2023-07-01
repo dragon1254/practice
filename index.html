@@ -138,12 +138,30 @@
   </div>
 </div>
 
+<div class="container mt-3">
+  <div class="card p-3">
+    <span id="shouhin">상품명</span>
+    <span id="nedan">가격</span>
+  </div>
+</div> 
+
+
 <div style="height: 1000px;"></div>
 
 <div class="lorem" style="width: 200px; height: 100px; overflow-y: scroll">
   Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae voluptas voluptatum minus praesentium fugit debitis at, laborum ipsa itaque placeat sit, excepturi eius. Nostrum perspiciatis, eligendi quae consectetur praesentium exercitationem.
 </div>  
+
+
+
 <script>
+var car2 = { name : '소나타', price : 50000 }
+document.getElementById("shouhin").innerText= car2.name;
+document.getElementById("nedan").innerText= car2.price;
+
+
+
+
 // 스크롤바 100px 내리면 로고 폰트 사이즈 작게
 window.addEventListener("scroll", function(){
   var 스크롤내린양 = $(window).scrollTop();
