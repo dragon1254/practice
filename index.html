@@ -152,12 +152,11 @@
   Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae voluptas voluptatum minus praesentium fugit debitis at, laborum ipsa itaque placeat sit, excepturi eius. Nostrum perspiciatis, eligendi quae consectetur praesentium exercitationem.
 </div>  
 
-
-
 <script>
-var car2 = { name : '소나타', price : 50000 }
-document.getElementById("shouhin").innerText= car2.name;
-document.getElementById("nedan").innerText= car2.price;
+var car2 = { name : '소나타', price : [50000, 7000, 500] }
+document.getElementById("shouhin").innerText= car2["name"];
+document.getElementById("nedan").innerHTML= car2.price[0];
+// document.getElementById("nedan").innerHTML= car2["price[0]"];
 
 
 
