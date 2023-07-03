@@ -44,21 +44,64 @@
         </div>
       </div>
     </div>
+    <form class="container my-5 form-group">
+      <p>상품선택</p>
+      <select class="form-select mt-2">
+        <option>모자</option>
+        <option>셔츠</option>
+        <option>바지</option>
+      </select>
+      <select class="form-select mt-2 form-hide">
+        <option>95</option>
+        <option>100</option>
+      </select>
+    </form>
+
+    <div id="test"></div>
 
     <script>
+      var a = document.createElement("p");
+      a.innerHTML = "안녕";
+      document.querySelector("#test").appendChild(a);
+
+      $(".form-select")
+        .eq(0)
+        .on("input", function (e) {
+          if (document.querySelectorAll(".form-select")[0].value == "셔츠") {
+            document
+              .querySelectorAll(".form-select")[1]
+              .classList.remove("form-hide");
+            var 셔츠 = `<option>95</option>
+        <option>100</option>`;
+            $(".form-select").eq(1).html(셔츠);
+
+            // $(".form-select").eq(1).removeClass("form-hide");
+          } else if (e.currentTarget.value == "모자") {
+            document
+              .querySelectorAll(".form-select")[1]
+              .classList.add("form-hide");
+          } else if ($(".form-select").eq(0).val() == "바지") {
+            var 탬플릿 = `<option>28</option>
+        <option>30</option>`;
+            $(".form-select").eq(1).removeClass("form-hide");
+            $(".form-select").eq(1).html(탬플릿);
+          }
+        });
+      // $(".form-select")
+      //   .eq(0)
+      //   .on("input", function () {
+      //     var value = $(".form-select").eq(0).val();
+      //     if (value == "셔츠") {
+      //       $(".form-select").eq(1).removeClass("form-hide");
+      //     }
+      //   });
+
       var products = [
         { id: 0, price: 70000, title: "Blossom Dress" },
         { id: 1, price: 50000, title: "Springfield Shirt" },
         { id: 2, price: 60000, title: "Black Monastery" },
       ];
       let j = products.length;
-
-      //   document.querySelectorAll(".cardt")[0].innerHTML = products[0].title;
-      //   document.querySelectorAll(".cardp")[0].innerHTML = products[0].price;
-      //   document.querySelectorAll(".cardt")[1].innerHTML = products[1].title;
-      //   document.querySelectorAll(".cardp")[1].innerHTML = products[1].price;
-      //   document.querySelectorAll(".cardt")[2].innerHTML = products[2].title;
-      //   document.querySelectorAll(".cardp")[2].innerHTML = products[2].price;
 
       for (var i = 0; i < j; i++) {
         // document.querySelectorAll(".card-body h5")[i].innerHTML =
