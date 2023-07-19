@@ -34,3 +34,18 @@ for (i = 0; i < products.length; i++) {
   <p>가격 : ${products[i].price}</p>`;
   $(".row").append(temp);
 }
+
+// products.forEach(function(a,i){
+// var xo = `<div class="col-sm-4">
+//     <img src="https://via.placeholder.com/600" class="w-100">
+//     <h5>${products[i].title}</h5>
+//     <p>가격 : ${products[i].price}</p>
+//     </div>`
+//     $(".row").append(xo)
+// })
+
+document.querySelector("#more").addEventListener("click",()=>{
+  $.get("https://codingapple1.github.io/js/more1.json").done(function(data) {
+    console.log(data);
+  })
+})
