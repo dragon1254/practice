@@ -155,3 +155,8 @@ ul.list::after {
 .form-hide {
   display: none;
 }
+#more {
+  float: right;
+  color: tomato;
+  background-color: aqua;
+}
