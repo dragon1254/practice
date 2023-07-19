@@ -2,8 +2,6 @@ var products = [
   { id: 0, price: 70000, title: "Blossom Dress" },
   { id: 1, price: 50000, title: "Springfield Shirt" },
   { id: 2, price: 60000, title: "Black Monastery" },
-  { id: 3, price: 30000, title: "Asphodelus" },
-  { id: 4, price: 90000, title: "First Story" },
 ];
 
 // 물품 카드 생성
