@@ -106,9 +106,9 @@ $(".row").html("");
 })
 
 $("#sixx").click(function(){
-    var ndata = data.filter(function(a){
-        return a.price <= 60000
-    });
+    var ndata = data.filter((a) => 
+         a.price <= 60000
+    );
     $(".row").html("");
     ndata.forEach(function(b,i){
         var temp = `<div class="col-sm-4">
