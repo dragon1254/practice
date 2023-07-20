@@ -62,3 +62,54 @@ document.querySelector("#more").addEventListener("click", () => {
     $("#more").css("display", "none");
   }
 });
+
+//   다나가순 정렬 버튼 누르면 다나가순으로 정렬
+//   - 처음것 지우고 다나가순으로 정렬해서 다시 html에 출력
+var 어레이 = ["다", "가", "나"];
+var 어레이2 = [7, 3, 5, 2, 40];
+어레이.sort(function (a, b) {
+  if (a > b) {
+    return -1;
+  } else if (a < b) {
+    return 1;
+  }
+});
+console.log(어레이);
+
+$("#ary").click(function () {
+  data.sort(function (a, b) {
+    if (a.title > b.title) {
+      return -1;
+    } else if (a.title < b.title) {
+      return 1;
+    }
+  });
+  $(".row").html("");
+
+  // for (i = 0; i < data.length; i++) {
+  //     var temp = `<div class="col-sm-4">
+  //     <img src="https://via.placeholder.com/600" class="w-100" />
+  //     <h5> ${data[i].title} </h5>
+  //     <p>가격 : ${data[i].price}</p>`;
+  //     $(".row").append(temp);
+  //   };
+  data.forEach(function (a, i) {
+    var temp = `<div class="col-sm-4">
+    <img src="https://via.placeholder.com/600" class="w-100" />
+    <h5> ${data[i].title} </h5>
+    <p>가격 : ${data[i].price}</p>`;
+    $(".row").append(temp);
+  });
+});
+
+$("#sixx").click(function () {
+  var ndata = data.filter((a) => a.price <= 60000);
+  $(".row").html("");
+  ndata.forEach(function (b, i) {
+    var temp = `<div class="col-sm-4">
+    <img src="https://via.placeholder.com/600" class="w-100" />
+    <h5> ${ndata[i].title} </h5>
+    <p>가격 : ${ndata[i].price}</p>`;
+    $(".row").append(temp);
+  });
+});
