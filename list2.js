@@ -124,21 +124,25 @@ $("#sixx").click(function(){
 // var arr = []
 
 $(".buy").click(function(e){
-  var bacc = $(e.target).siblings("h5").text();
+  var title = $(e.target).siblings("h5").text();
 // arr.push(bacc);
 //   var newarr = JSON.stringify(arr);
 //   localStorage.setItem("cart",newarr);
 
 if(localStorage.getItem("cart") != null) {
-var ttemp =JSON.parse(localStorage.cart)
-ttemp.push(bacc)
+  var ttemp =JSON.parse(localStorage.cart)
+ttemp.forEach(function(a,i){
+  if(ttemp[i] == title) {return}
+})
+  ttemp.push(title)
 localStorage.setItem("cart",JSON.stringify(ttemp))
 } else{
-  localStorage.setItem("cart",JSON.stringify([bacc]))
+  localStorage.setItem("cart",JSON.stringify([title]))
 }
-
-
 })
+
+
+
 
 $("#backet").click(function(e){
   window.open("cart.html")
