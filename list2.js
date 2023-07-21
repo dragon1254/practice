@@ -29,7 +29,9 @@ for (i = 0; i < data.length; i++) {
   var temp = `<div class="col-sm-4">
   <img src="https://via.placeholder.com/600" class="w-100" />
   <h5> ${data[i].title} </h5>
-  <p>가격 : ${data[i].price}</p>`;
+  <p>가격 : ${data[i].price}</p>
+  <button class="buy">구매</button>
+  </div>`;
   $(".row").append(temp);
 }
 
@@ -118,4 +120,26 @@ $("#sixx").click(function(){
     $(".row").append(temp);
     
   })
+})
+// var arr = []
+
+$(".buy").click(function(e){
+  var bacc = $(e.target).siblings("h5").text();
+// arr.push(bacc);
+//   var newarr = JSON.stringify(arr);
+//   localStorage.setItem("cart",newarr);
+
+if(localStorage.getItem("cart") != null) {
+var ttemp =JSON.parse(localStorage.cart)
+ttemp.push(bacc)
+localStorage.setItem("cart",JSON.stringify(ttemp))
+} else{
+  localStorage.setItem("cart",JSON.stringify([bacc]))
+}
+
+
+})
+
+$("#backet").click(function(e){
+  window.open("cart.html")
 })
