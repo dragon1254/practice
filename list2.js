@@ -29,7 +29,9 @@ for (i = 0; i < data.length; i++) {
   var temp = `<div class="col-sm-4">
   <img src="https://via.placeholder.com/600" class="w-100" />
   <h5> ${data[i].title} </h5>
-  <p>가격 : ${data[i].price}</p>`;
+  <p>가격 : ${data[i].price}</p>
+  <button class="buy">구매</button>
+  </div>`;
   $(".row").append(temp);
 }
 
@@ -112,4 +114,42 @@ $("#sixx").click(function () {
     <p>가격 : ${ndata[i].price}</p>`;
     $(".row").append(temp);
   });
+});
+var arr = [];
+
+$(".buy").click(function (e) {
+  var title = $(e.target).siblings("h5").text();
+  //   arr.push(title);
+  // var chk1 = arr.findIndex(function (kk) {
+  //   kk == title;
+  //   console.log(kk);
+  // });
+  //   if (chk1 >= 0) {
+  //     return;
+  //   } else {
+  //     var newarr = JSON.stringify(arr);
+  //     localStorage.setItem("cart", newarr);
+  //   }
+  // });
+
+  // localStorage에서 getitem, setitem 써서 한 것
+  if (localStorage.getItem("cart") != null) {
+    var ttemp = JSON.parse(localStorage.cart);
+    var chk1 = ttemp.findIndex(function (kk) {
+      kk == title;
+    });
+    console.log(chk1);
+    if (chk1 < 0) {
+      ttemp.push(title);
+      localStorage.setItem("cart", JSON.stringify(ttemp));
+    } else {
+      return;
+    }
+  } else {
+    localStorage.setItem("cart", JSON.stringify([title]));
+  }
+});
+
+$("#backet").click(function (e) {
+  window.open("cart.html");
 });
