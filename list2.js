@@ -125,15 +125,17 @@ $("#sixx").click(function(){
 
 $(".buy").click(function(e){
   var title = $(e.target).siblings("h5").text();
-// arr.push(bacc);
+// arr.push(title);
 //   var newarr = JSON.stringify(arr);
 //   localStorage.setItem("cart",newarr);
 
 if(localStorage.getItem("cart") != null) {
   var ttemp =JSON.parse(localStorage.cart)
-ttemp.forEach(function(a,i){
-  if(ttemp[i] == title) {return}
-})
+
+// 응용1 해결중 - 아래 3줄 있어도 없어도 똑같아서 질문중
+//   ttemp.forEach(function(a,i){
+//   if(ttemp[i] == title) {return}
+// })
   ttemp.push(title)
 localStorage.setItem("cart",JSON.stringify(ttemp))
 } else{
