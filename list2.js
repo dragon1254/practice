@@ -136,7 +136,7 @@ $(".buy").click(function (e) {
   if (localStorage.getItem("cart") != null) {
     var ttemp = JSON.parse(localStorage.cart);
     var chk1 = ttemp.findIndex(function (kk) {
-      kk == title;
+      return kk == title;
     });
     console.log(chk1);
     if (chk1 < 0) {
