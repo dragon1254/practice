@@ -7,16 +7,53 @@
     $(".slide-box").eq(0).on("mousemove", function(e){
         if(확인 == true) {
         console.log(e.clientX - 시작좌표);
-        // if(e.clientX - 시작좌표 >1000){
-        //     $(".slide-container").css("transform", "translateX(-100vw)");
-        // }
         $(".slide-container").css("transform", `translateX(${e.clientX - 시작좌표}px)`)
         }});
-        $(".slide-box").eq(0).on("mouseup", function(){
+        $(".slide-box").eq(0).on("mouseup", function(e){
             확인 = false;
+            if(e.clientX - 시작좌표 <-100) {
+              $(".slide-container")
+              .css("transition", "all 0.5s")
+              .css("transform", "translateX(-100vw)")
+            }
+
+            else {
+              $(".slide-container")
+              .css("transition", "all 0.5s")
+              .css("transform", "translateX(0vw)")
+            }
+            setTimeout(function(){
+              $(".slide-container").css("transition",500)
+            })
         });
-        
-  
+        // 아래는 모바일 환경. mouse-down,up, move 대신에 touch - start,end,move 써야 되고 좌표도 조금씩 다르게 설정해야 함.
+        // 이런거 바꿔주는 것이 hammer.js 라이브러리라고 하니 찾아보고 추가하는 것을 추천한다함
+        $(".slide-box").eq(0).on("touchstart",function(e){
+          시작좌표 = e.touches[0].clientX;
+          확인 = true
+        })
+          $(".slide-box").eq(0).on("touchmove", function(e){
+              if(확인 == true) {
+              console.log(e.touches[0].clientX - 시작좌표);
+              $(".slide-container").css("transform", `translateX(${e.clientX - 시작좌표}px)`)
+              }});
+              $(".slide-box").eq(0).on("touchend", function(e){
+                  확인 = false;
+                  if(e.changedTouches[0].clientX - 시작좌표 <-100) {
+                    $(".slide-container")
+                    .css("transition", "all 0.5s")
+                    .css("transform", "translateX(-100vw)")
+                  }
+      
+                  else {
+                    $(".slide-container")
+                    .css("transition", "all 0.5s")
+                    .css("transform", "translateX(0vw)")
+                  }
+                  setTimeout(function(){
+                    $(".slide-container").css("transition",500)
+                  })
+              });
   
 //   $('.slide-box').eq(0).on('mousedown', function(e){
 //     시작좌표 = e.clientX;
