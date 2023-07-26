@@ -51,9 +51,43 @@
                     .css("transform", "translateX(0vw)")
                   }
                   setTimeout(function(){
-                    $(".slide-container").css("transition",500)
+                    $(".slide-container").css("transition","none"),500
                   })
               });
+
+              // 다른 사진도 드래그하면 넘기기
+              $(".slide-box").eq(1).on("mousedown",function(e){
+                시작좌표 = e.clientX;
+                확인 = true
+              })
+              $(".slide-box").eq(1).on("mousemove", function(e){
+                if(확인 == true) {
+                console.log(e.clientX - 시작좌표);
+                $(".slide-container").css("transform", `translateX(${e.clientX - 시작좌표}px)`)
+                }});
+                $(".slide-box").eq(1).on("mouseup", function(e){
+                    확인 = false;
+                    if(e.clientX - 시작좌표 <-100) {
+                      $(".slide-container")
+                      .css("transition", "all 0.5s")
+                      .css("transform", "translateX(-100vw)")
+                    }
+        
+                    else if (e.clientX - 시작좌표>-100 || e.clientX - 시작좌표 <100){
+                      $(".slide-container")
+                      .css("transition", "all 0.5s")
+                      .css("transform", "translateX(0vw)")
+                    }
+                    else {
+                      $(".slide-container")
+                      .css("transition", "all 0.5s")
+                      .css("transform", "translateX(100vw)")
+
+                    }
+                    setTimeout(function(){
+                      $(".slide-container").css("transition",500)
+                    })
+                });
   
 //   $('.slide-box').eq(0).on('mousedown', function(e){
 //     시작좌표 = e.clientX;
