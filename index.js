@@ -22,10 +22,11 @@
               .css("transition", "all 0.5s")
               .css("transform", "translateX(0vw)")
             }
-            setTimeout(function(){
-              $(".slide-container").css("transition",500)
-            })
+            
         });
+        setTimeout(function(){
+          $(".slide-container").css("transition",500)
+        })
         // 아래는 모바일 환경. mouse-down,up, move 대신에 touch - start,end,move 써야 되고 좌표도 조금씩 다르게 설정해야 함.
         // 이런거 바꿔주는 것이 hammer.js 라이브러리라고 하니 찾아보고 추가하는 것을 추천한다함
         $(".slide-box").eq(0).on("touchstart",function(e){
@@ -50,10 +51,11 @@
                     .css("transition", "all 0.5s")
                     .css("transform", "translateX(0vw)")
                   }
-                  setTimeout(function(){
-                    $(".slide-container").css("transition","none"),500
-                  })
+                  
               });
+              setTimeout(function(){
+                $(".slide-container").css("transition","none"),500
+              })
 
               // 다른 사진도 드래그하면 넘기기
               $(".slide-box").eq(1).on("mousedown",function(e){
@@ -63,7 +65,7 @@
               $(".slide-box").eq(1).on("mousemove", function(e){
                 if(확인 == true) {
                 console.log(e.clientX - 시작좌표);
-                $(".slide-container").css("transform", `translateX(cal(${e.clientX - 시작좌표}+-100vw)px)`)
+                $(".slide-container").css("transition","all 0.5s").css("transform", `translateX(${e.clientX - 시작좌표}px-100vw)`)
                 }});
                 $(".slide-box").eq(1).on("mouseup", function(e){
                     확인 = false;
@@ -84,9 +86,10 @@
                       .css("transform", `translateX(-100vw)`)
 
                     }
+                    });
                     setTimeout(function(){
                       $(".slide-container").css("transition","none"),500})
-                });
+                
   
 //   $('.slide-box').eq(0).on('mousedown', function(e){
 //     시작좌표 = e.clientX;
