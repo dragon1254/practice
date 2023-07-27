@@ -5,7 +5,7 @@
     확인 = true
   })
     $(".slide-box").eq(0).on("mousemove", function(e){
-        if(확인 == true) {
+        if(확인 == true && e.clientX - 시작좌표 <0) {
         console.log(e.clientX - 시작좌표);
         $(".slide-container").css("transform", `translateX(${e.clientX - 시작좌표}px)`)
         }});
@@ -63,30 +63,29 @@
               $(".slide-box").eq(1).on("mousemove", function(e){
                 if(확인 == true) {
                 console.log(e.clientX - 시작좌표);
-                $(".slide-container").css("transform", `translateX(${e.clientX - 시작좌표}px)`)
+                $(".slide-container").css("transform", `translateX(cal(${e.clientX - 시작좌표}+-100vw)px)`)
                 }});
                 $(".slide-box").eq(1).on("mouseup", function(e){
                     확인 = false;
                     if(e.clientX - 시작좌표 <-100) {
                       $(".slide-container")
                       .css("transition", "all 0.5s")
-                      .css("transform", "translateX(-100vw)")
+                      .css("transform", `translateX(-200vw)`)
                     }
         
-                    else if (e.clientX - 시작좌표>-100 || e.clientX - 시작좌표 <100){
+                    else if (e.clientX - 시작좌표>100){
                       $(".slide-container")
                       .css("transition", "all 0.5s")
-                      .css("transform", "translateX(0vw)")
+                      .css("transform", `translateX(0vw)`)
                     }
                     else {
                       $(".slide-container")
                       .css("transition", "all 0.5s")
-                      .css("transform", "translateX(100vw)")
+                      .css("transform", `translateX(-100vw)`)
 
                     }
                     setTimeout(function(){
-                      $(".slide-container").css("transition",500)
-                    })
+                      $(".slide-container").css("transition","none"),500})
                 });
   
 //   $('.slide-box').eq(0).on('mousedown', function(e){
