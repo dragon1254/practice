@@ -1,4 +1,15 @@
-  let 시작좌표 =0
+var imagearray =["car1.png","car2.png","car3.png"]
+
+$(document).ready(function(){
+for(var i=0; i<imagearray.length;i++){
+  console.log(i)
+  var imagetemp = `<img src="${imagearray[i]}" draggable="false">`
+  $(".slide-box").eq(i).append(imagetemp)
+}
+});
+
+
+let 시작좌표 =0
   let 확인 = false
   $(".slide-box").eq(0).on("mousedown",function(e){
     시작좌표 = e.clientX;
@@ -57,38 +68,75 @@
                 $(".slide-container").css("transition","none"),500
               })
 
-              // 다른 사진도 드래그하면 넘기기
-              $(".slide-box").eq(1).on("mousedown",function(e){
-                시작좌표 = e.clientX;
-                확인 = true
-              })
-              $(".slide-box").eq(1).on("mousemove", function(e){
-                if(확인 == true) {
-                console.log(e.clientX - 시작좌표);
-                $(".slide-container").css("transition","all 0.5s").css("transform", `translateX(${e.clientX - 시작좌표}px-100vw)`)
-                }});
-                $(".slide-box").eq(1).on("mouseup", function(e){
-                    확인 = false;
-                    if(e.clientX - 시작좌표 <-100) {
-                      $(".slide-container")
-                      .css("transition", "all 0.5s")
-                      .css("transform", `translateX(-200vw)`)
-                    }
-        
-                    else if (e.clientX - 시작좌표>100){
-                      $(".slide-container")
-                      .css("transition", "all 0.5s")
-                      .css("transform", `translateX(0vw)`)
-                    }
-                    else {
-                      $(".slide-container")
-                      .css("transition", "all 0.5s")
-                      .css("transform", `translateX(-100vw)`)
+// 다른 사진도 드래그하면 넘기기
+imagearray.forEach((a,i) => {
+$(".slide-box").eq(i).on("mousedown",function(e){
+  시작좌표 = e.clientX
+  확인 = true
+})
+$(".slide-box").eq(i).on("mousemove", function(e){
+  if (확인== true) {
+    console.log(e.clientX - 시작좌표);
+  $(".slide-container").css("transform", `translateX(calc(${e.clientX - 시작좌표}px-${i*100}vw))`)
+  
+}})
+$(".slide-box").eq(i).on("mouseup", function(e){
+  확인 = false;
+  if(e.clientX - 시작좌표<-200) {
+    console.log(i)
+    $(".slide-container").css("transition", "all 0.5s").css("transform", `translateX(-${(i+1)*100}vw)`)
+  } else if (e.clientX - 시작좌표>200) {
+    console.log(i)
+    $(".slide-container").css("transition", "all 0.5s").css("transform",`translateX(-${(i-1)*100}vw)`)
+  } else {
+    console.log(i)
+    $(".slide-container").css("transition", "all 0.5s").css("transform", `translateX(-${i*100}vw)`)
+  }
+})
+setTimeout(function(){
+  $(".slide-container").css("transition", "none"),500
+});
+});
 
-                    }
-                    });
-                    setTimeout(function(){
-                      $(".slide-container").css("transition","none"),500})
+
+
+
+
+
+
+
+
+
+
+
+
+// $(".slide-box").eq(1).on("mousedown",function(e){
+//   시작좌표 = e.clientX;
+//    확인 = true
+// })
+// $(".slide-box").eq(1).on("mousemove", function(e){
+//  if(확인 == true) {
+//    console.log(e.clientX - 시작좌표);
+//      $(".slide-container").css("transition","all 0.5s").css("transform", `translateX(calc(${e.clientX - 시작좌표}px-100vw))`)
+//    }});
+// $(".slide-box").eq(1).on("mouseup", function(e){
+//     확인 = false;
+//    if(e.clientX - 시작좌표 <-100) {
+//      $(".slide-container")
+//        .css("transition", "all 0.5s")
+//        .css("transform", `translateX(-200vw)`)
+//       } else if (e.clientX - 시작좌표>100){
+//          $(".slide-container")
+//            .css("transition", "all 0.5s")
+//            .css("transform", `translateX(0vw)`)
+//       } else {
+//          $(".slide-container")
+//           .css("transition", "all 0.5s")
+//           .css("transform", `translateX(-100vw)`)
+//           }
+//       });
+// setTimeout(function(){
+//  $(".slide-container").css("transition","none"),500})
                 
   
 //   $('.slide-box').eq(0).on('mousedown', function(e){
