@@ -77,7 +77,7 @@ $(".slide-box").eq(i).on("mousedown",function(e){
 $(".slide-box").eq(i).on("mousemove", function(e){
   if (확인== true) {
     console.log(e.clientX - 시작좌표);
-  $(".slide-container").css("transform", `translateX(calc(${e.clientX - 시작좌표}px-${i*100}vw))`)
+  $(".slide-container").css("transform", `translateX(cal(${e.clientX - 시작좌표}px-${i*100}vw))`)
   
 }})
 $(".slide-box").eq(i).on("mouseup", function(e){
@@ -412,3 +412,17 @@ document.getElementById("conf").addEventListener("click", function(){
       }});
       }
       
+document.querySelector("#quiz").addEventListener("click",function(e){
+  switch(e.target.innerHTML){
+    case "사과":
+     alert("정답입니다");
+      break
+    case "배":
+     alert("틀림");
+     break
+    case "귤":
+    alert("틀렸죠");
+break;
+
+  }
+})      
