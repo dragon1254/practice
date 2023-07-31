@@ -15,3 +15,10 @@
     width: auto;
    
 }
+.backet {
+    width: 90vw;
+    margin: 10px;
+background-color: black;
+color: wheat;
+height: 600px;
+}
