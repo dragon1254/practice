@@ -10,3 +10,8 @@
 .tt {
     font-weight: 800;
 }
+.card-column {
+    float: left;
+    width: auto;
+   
+}
