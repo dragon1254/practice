@@ -85,4 +85,6 @@ $(".add").on("click", function(e){
     let 몇번째 = cart.findIndex(function(a){
         return a.id == lwrma
     })
+
+
 })
