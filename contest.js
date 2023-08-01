@@ -31,7 +31,7 @@ $.get("./store.json").then(function(data){
         $(".row").append(temq);
        
     });
-    
+    // each 문법 체크하기
     $('.card-column h4').each(function(a, b){
         let title = b.innerHTML;
         title = title.replace(gul, `<span style="background : yellow">${gul}</span>`);
