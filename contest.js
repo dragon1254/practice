@@ -3,25 +3,41 @@ var product =[]
 $.get("./store.json").then(function(data){
     product = data.products
     product.forEach((a,i) => {
-    var temp = `<div class="card-column">
+    var temp = `<div class="card-column" draggable="true" data-id="${a.id}">
     <img src="${product[i].photo}">
     <h4 class="tt">${product[i].title}</h4>
-    <p>${product[i].brand}</p>
+    <h4${product[i].brand}</h4>
     <h5>가격: ${product[i].price}</h5>
+    <button data-id="${a.id}">담기</button>
 </div>`
     $(".row").append(temp)
-    console.log(i);
-})});
+    })
 
-$(".form-control").on("input",function(){
+    $(".form-control").on("input", function(){
+    var gul = $(".form-control").val();
+    var djqt = product.filter(function(a){
+        return a.title.includes(gul) || a.brand.includes(gul)
+    });    
+    djqt.forEach((a,i) => {
+    var temq = `<div class="card-column">
+    <img src="${a.photo}">
+    <h4 class="tt">${a.title}</h4>
+    <h4>${a.brand}</h4>
+    <h5>가격: ${a.price}</h5>
+    <button data-id="${a.id}">담기</button>
+</div>`
+        console.log(djqt);
+        $(".row").html("");
+        $(".row").append(temq);
+       
+    });
     
-    // 그 상자 안의 값이 상품의 타이틀에 포함되어 있으면 현재의 리스트를 지우고 그 상품만 나타내기
-    // 포함된 글자를 노란색으로 표시하기
-// 포함된 글자를 찾아서 변수 안에 넣고
-    // var search1 = $(".form-control").on()
-// 현재 리스트를 지우고
-    // $(".card-column").html("")
-// 포함된 글자의 타이틀을 표시
-    // $(".card-column").append(``)
-// 만약 검색 상자가 비어있으면 원래 리스트 표시
+    $('.card-column h4').each(function(a, b){
+        let title = b.innerHTML;
+        title = title.replace(gul, `<span style="background : yellow">${gul}</span>`);
+        console.log(title);
+
+        b.innerHTML = title;
+      })
 })
+});    
