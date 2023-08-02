@@ -134,13 +134,7 @@ function allowDrop(ev) {
     $(".backet").append(temp)
 
     })
-
-
-
-
-
-   
-  }
+}
 
 // 아래는 html에 ondrop, ondragover, ondragstart 없을 때 함수쓰는 것일듯
 // $(".card-column").on("dragstart", function(e){
