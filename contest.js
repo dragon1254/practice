@@ -5,7 +5,7 @@ $.get("./store.json").then(function(data){
     product = data.products
     product.forEach((a,i) => {
     var temp = `<div class="card-column" draggable="true" data-id="${a.id}" ondragstart="drag(event)">
-    <img src="${product[i].photo}">
+    <img src="${product[i].photo}" data-id="${a.id}">
     <h4 class="tt">${product[i].title}</h4>
     <h4${product[i].brand}</h4>
     <h5>가격: ${product[i].price}</h5>
@@ -43,7 +43,29 @@ $.get("./store.json").then(function(data){
         b.innerHTML = title;
       })
 })
+
+$(".add").on("click", function(e){
+    let lwrma = e.target.dataset.id;
+    cart.push(product[lwrma]);
+    console.log(cart);
+    $(".backet").html("")
+    cart.forEach((a,i) => {
+    var temp = `<div class="card-column" draggable="true" data-id="${a.id}" ondragstart="drag(event)">
+    <img src="${a.photo}">
+    <h4 class="tt">${a.title}</h4>
+    <h4${a.brand}</h4>
+    <h5>가격: ${a.price}</h5>
+    <input type="number" class="inp">
+</div>`
+    $(".backet").append(temp)
+
+    })
+})
+
+
+
 });    
+
 
 // 장바구니 드래그
 
@@ -56,35 +78,43 @@ function allowDrop(ev) {
   }
   
   function drag(ev) {
-    ev.dataTransfer.setData("text", ev.target.id);
+    ev.dataTransfer.setData("text", ev.target.dataset.id);
   }
   
   function drop(ev) {
     ev.preventDefault();
-    var data = ev.dataTransfer.getData("text");
-    ev.target.appendChild(document.getElementById(data));
+    var dat = ev.dataTransfer.getData("text");
+    // ev.target.appendChild(document.getElementById(data));
+    console.log(dat)
+
+    cart.push(product[dat]);
+    console.log(cart);
+    $(".backet").html("")
+    cart.forEach((a,i) => {
+    var temp = `<div class="card-column" draggable="true" data-id="${a.id}" ondragstart="drag(event)">
+    <img src="${a.photo}">
+    <h4 class="tt">${a.title}</h4>
+    <h4${a.brand}</h4>
+    <h5>가격: ${a.price}</h5>
+    <input type="number" class="inp">
+</div>`
+    $(".backet").append(temp)
+
+    })
   }
 
-
-$(".card-column").on("dragstart", function(e){
-    e.originalEvent.dataTransfer.setData('id', e.target.dataset.id)
-});
-$(".basket").on("dragover",function(e){
-e.preventDefault();
-});
-$(".basket").on("drop", function(e){
-    let productId = e.originalEvent.dataTransfer.getData('id');
-        console.log(productId)
-})
+// 아래는 html에 ondrop, ondragover, ondragstart 없을 때 함수쓰는 것일듯
+// $(".card-column").on("dragstart", function(e){
+//     e.originalEvent.dataTransfer.setData('id', e.target.dataset.id)
+// });
+// $(".backet").on("dragover",function(e){
+// e.preventDefault();
+// });
+// $(".backet").on("drop", function(e){
+//     let productId = e.originalEvent.dataTransfer.getData('id');
+//         console.log(productId)
+// })
 
 // 담기버튼 누르면 그 누른 아이디 받아와서 새 배열에 저장, 그 저장된 배열만큼 그 카드 html을 장바구니쪽에 재생성
 
-$(".add").on("click", function(e){
-    let lwrma = e.target.dataset.id;
-    console.log(lwrma);
-    let 몇번째 = cart.findIndex(function(a){
-        return a.id == lwrma
-    })
 
-
-})
