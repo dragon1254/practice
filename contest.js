@@ -44,18 +44,40 @@ $.get("./store.json").then(function(data){
       })
 })
 
+
+// 담기 버튼 눌렀을 때 장바구니에 추가하기
+// 담기 버튼 누르면 그 누른 타겟의 dataset.id를 따서 cart에 product[]로 추가하고 
+// 그 cart에 담긴 것을 장바구니쪽에 추가해줌
+
 $(".add").on("click", function(e){
     let lwrma = e.target.dataset.id;
-    cart.push(product[lwrma]);
+    
+    //let cart에 상품이 이미있는지 찾고 없으면 let cart에 {}추가, 있으면 수량만 ++;
+    //    이 부분 복습 체크
+    // !!
+    let 있나 = cart.findIndex((a) => {return a.id == lwrma})
+    if(있나 == -1){
+        let 현재상품 = product.find(function(a){
+            return a.id == lwrma
+        })
+    현재상품.count =1
+        cart.push(현재상품);
+    } else {
+        cart[있나].count++
+    }
+
     console.log(cart);
+
+
     $(".backet").html("")
+
     cart.forEach((a,i) => {
     var temp = `<div class="card-column" draggable="true" data-id="${a.id}" ondragstart="drag(event)">
     <img src="${a.photo}">
     <h4 class="tt">${a.title}</h4>
     <h4${a.brand}</h4>
     <h5>가격: ${a.price}</h5>
-    <input type="number" class="inp">
+    <input type="number" class="inp" value="${a.count}">
 </div>`
     $(".backet").append(temp)
 
@@ -85,22 +107,39 @@ function allowDrop(ev) {
     ev.preventDefault();
     var dat = ev.dataTransfer.getData("text");
     // ev.target.appendChild(document.getElementById(data));
-    console.log(dat)
 
-    cart.push(product[dat]);
-    console.log(cart);
+
+    let 있나 = cart.findIndex((a) => {return a.id == dat})
+    if(있나 == -1){
+        let 현재상품 = product.find(function(a){
+            return a.id == dat
+        })
+    현재상품.count =1
+        cart.push(현재상품);
+    } else {
+        cart[있나].count++
+    }
+
+
     $(".backet").html("")
+
     cart.forEach((a,i) => {
     var temp = `<div class="card-column" draggable="true" data-id="${a.id}" ondragstart="drag(event)">
     <img src="${a.photo}">
     <h4 class="tt">${a.title}</h4>
     <h4${a.brand}</h4>
     <h5>가격: ${a.price}</h5>
-    <input type="number" class="inp">
+    <input type="number" class="inp" value="${a.count}">
 </div>`
     $(".backet").append(temp)
 
     })
+
+
+
+
+
+   
   }
 
 // 아래는 html에 ondrop, ondragover, ondragstart 없을 때 함수쓰는 것일듯
