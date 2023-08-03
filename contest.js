@@ -75,7 +75,7 @@ $(".add").on("click", function(e){
 
 
     $(".backet").html("")
-
+    
     cart.forEach((a,i) => {
     var temp = `<div class="card-column" draggable="true" data-id="${a.id}" ondragstart="drag(event)">
     <img src="${a.photo}">
@@ -138,7 +138,7 @@ function allowDrop(ev) {
     } else {
         cart[있나].count++
     }
-
+    
 
     $(".backet").html("")
 
@@ -153,10 +153,7 @@ function allowDrop(ev) {
 </div>`
     $(".backet").append(temp)
 
-    $(".inp").on("input",function(){
-        unt = $(".inp").val()
-        console.log(unt)
-            })
+    
             if (a.id ==0) {
                 합1 = a.price * a.count
             } else if (a.id ==1) {
@@ -198,6 +195,4 @@ $(".clr").on("click", function(){
     <span>장바구니(드래그 가능)</span>
     <P></P>
     </div>`)
-a= null
-i= null
 })
