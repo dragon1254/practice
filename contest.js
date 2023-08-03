@@ -1,5 +1,10 @@
 let product =[];
 let cart =[];
+let 합 =0
+let 합1 = 0
+let 합2 =0
+let 합3 =0
+let 합4 =0
 
 $.get("./store.json").then(function(data){
     product = data.products
@@ -78,8 +83,22 @@ $(".add").on("click", function(e){
     <h4${a.brand}</h4>
     <h5>가격: ${a.price}</h5>
     <input type="number" class="inp" value="${a.count}">
-</div>`
+    <p></p>
+    </div>`
     $(".backet").append(temp)
+    if (a.id ==0) {
+        합1 = a.price * a.count
+    } else if (a.id ==1) {
+        합2 = a.price * a.count
+    } else if (a.id ==2) {
+        합3 = a.price * a.count
+    } else if (a.id ==3) {
+        합4 = a.price * a.count
+    }
+    합 =0
+    합 = 합1+합2+합3+합4
+    $(".sum").html(``)
+    $(".sum").append(`<p>합계 ${합}원</p>`)
 
     })
 })
@@ -130,8 +149,28 @@ function allowDrop(ev) {
     <h4${a.brand}</h4>
     <h5>가격: ${a.price}</h5>
     <input type="number" class="inp" value="${a.count}">
+    <P></P>
 </div>`
     $(".backet").append(temp)
+
+    $(".inp").on("input",function(){
+        unt = $(".inp").val()
+        console.log(unt)
+            })
+            if (a.id ==0) {
+                합1 = a.price * a.count
+            } else if (a.id ==1) {
+                합2 = a.price * a.count
+            } else if (a.id ==2) {
+                합3 = a.price * a.count
+            } else if (a.id ==3) {
+                합4 = a.price * a.count
+            }
+            합 =0
+            합 = 합1+합2+합3+합4
+            $(".sum").html(``)
+            $(".sum").append(`<p>합계 ${합}원</p>`)
+        
 
     })
 }
@@ -151,3 +190,14 @@ function allowDrop(ev) {
 // 담기버튼 누르면 그 누른 아이디 받아와서 새 배열에 저장, 그 저장된 배열만큼 그 카드 html을 장바구니쪽에 재생성
 
 
+
+$(".clr").on("click", function(){
+    console.log("1");
+    $(".backet").html(``)
+    $(".backet").html(`<div class="backet" ondrop="drop(event)" ondragover="allowDrop(event)">
+    <span>장바구니(드래그 가능)</span>
+    <P></P>
+    </div>`)
+a= null
+i= null
+})
