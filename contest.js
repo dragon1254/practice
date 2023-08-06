@@ -5,6 +5,7 @@ let 합1 = 0
 let 합2 =0
 let 합3 =0
 let 합4 =0
+let num =1
 
 $.get("./store.json").then(function(data){
     product = data.products
@@ -82,18 +83,20 @@ $(".add").on("click", function(e){
     <h4 class="tt">${a.title}</h4>
     <h4${a.brand}</h4>
     <h5>가격: ${a.price}</h5>
-    <input type="number" class="inp" value="${a.count}">
+    <input type="number" class="inp" value="${num}">
     <p></p>
     </div>`
+    num = a.count
+    
     $(".backet").append(temp)
     if (a.id ==0) {
-        합1 = a.price * a.count
+        합1 = a.price * num
     } else if (a.id ==1) {
-        합2 = a.price * a.count
+        합2 = a.price * num
     } else if (a.id ==2) {
-        합3 = a.price * a.count
+        합3 = a.price * num
     } else if (a.id ==3) {
-        합4 = a.price * a.count
+        합4 = a.price * num
     }
     합 =0
     합 = 합1+합2+합3+합4
@@ -101,9 +104,70 @@ $(".add").on("click", function(e){
     $(".sum").append(`<p>합계 ${합}원</p>`)
 
     })
+    // 인풋 상자 구현중
+    $(".inp").on("click",function(){
+        console.log("10")
+        num= $(".inp").val()
+        $(".inp").html = num
+        cart.forEach((a,i) => {
+        $(".backet").append(temp)
+        var temp = `<div class="card-column" draggable="true" data-id="${a.id}" ondragstart="drag(event)">
+    <img src="${a.photo}">
+    <h4 class="tt">${a.title}</h4>
+    <h4${a.brand}</h4>
+    <h5>가격: ${a.price}</h5>
+    <input type="number" class="inp" value="${num}">
+    <p></p>
+    </div>`
+        if (a.id ==0) {
+            합1 = a.price * num
+        } else if (a.id ==1) {
+            합2 = a.price * num
+        } else if (a.id ==2) {
+            합3 = a.price * num
+        } else if (a.id ==3) {
+            합4 = a.price * num
+        }
+        합 =0
+        합 = 합1+합2+합3+합4
+        $(".sum").html(``)
+        $(".sum").append(`<p>합계 ${합}원</p>`)
+        })
+        
+    })
+
+        
+    // if (a.id ==0) {
+    //     합1 = a.price * a.count
+    // } else if (a.id ==1) {
+    //     합2 = a.price * a.count
+    // } else if (a.id ==2) {
+    //     합3 = a.price * a.count
+    // } else if (a.id ==3) {
+    //     합4 = a.price * a.count
+    // }
+    // 합 =0
+    // 합 = 합1+합2+합3+합4
+    // $(".sum").html(``)
+    // $(".sum").append(`<p>합계 ${합}원</p>`)
+
+    // })
 })
 
-
+$(".clr").on("click", function(){
+    console.log("1");
+    $(".backet").html(``)
+    $(".backet").html(`<div class="backet" ondrop="drop(event)" ondragover="allowDrop(event)">
+    <span>장바구니(드래그 가능)</span>
+    <P></P>
+    </div>`)
+    $(".sum").html(`<p>합계 0원</p>`)
+    cart.forEach((a,i) => {
+        a.count = 0;
+        합= 0;
+    });
+   
+})
 
 });    
 
@@ -148,20 +212,22 @@ function allowDrop(ev) {
     <h4 class="tt">${a.title}</h4>
     <h4${a.brand}</h4>
     <h5>가격: ${a.price}</h5>
-    <input type="number" class="inp" value="${a.count}">
+    <input type="number" class="inp" value="${num}">
     <P></P>
 </div>`
+
+num = a.count
     $(".backet").append(temp)
 
     
             if (a.id ==0) {
-                합1 = a.price * a.count
+                합1 = a.price * num
             } else if (a.id ==1) {
-                합2 = a.price * a.count
+                합2 = a.price * num
             } else if (a.id ==2) {
-                합3 = a.price * a.count
+                합3 = a.price * num
             } else if (a.id ==3) {
-                합4 = a.price * a.count
+                합4 = a.price * num
             }
             합 =0
             합 = 합1+합2+합3+합4
@@ -170,7 +236,38 @@ function allowDrop(ev) {
         
 
     })
+    $(".inp").on("click",function(){
+        console.log("10")
+        num= $(".inp").val()
+        $(".inp").html = num
+        cart.forEach((a,i) => {
+        $(".backet").append(temp)
+        var temp = `<div class="card-column" draggable="true" data-id="${a.id}" ondragstart="drag(event)">
+    <img src="${a.photo}">
+    <h4 class="tt">${a.title}</h4>
+    <h4${a.brand}</h4>
+    <h5>가격: ${a.price}</h5>
+    <input type="number" class="inp" value="${num}">
+    <p></p>
+    </div>`
+        if (a.id ==0) {
+            합1 = a.price * num
+        } else if (a.id ==1) {
+            합2 = a.price * num
+        } else if (a.id ==2) {
+            합3 = a.price * num
+        } else if (a.id ==3) {
+            합4 = a.price * num
+        }
+        합 =0
+        합 = 합1+합2+합3+합4
+        $(".sum").html(``)
+        $(".sum").append(`<p>합계 ${합}원</p>`)
+        })
+        
+    })
 }
+
 
 // 아래는 html에 ondrop, ondragover, ondragstart 없을 때 함수쓰는 것일듯
 // $(".card-column").on("dragstart", function(e){
@@ -186,13 +283,61 @@ function allowDrop(ev) {
 
 // 담기버튼 누르면 그 누른 아이디 받아와서 새 배열에 저장, 그 저장된 배열만큼 그 카드 html을 장바구니쪽에 재생성
 
+//금액 합계 function
+function 금액합계(){
+    
+if (a.id ==0) {
+    합1 = a.price * a.count
+} else if (a.id ==1) {
+    합2 = a.price * a.count
+} else if (a.id ==2) {
+    합3 = a.price * a.count
+} else if (a.id ==3) {
+    합4 = a.price * a.count
+}
+합 =0
+합 = 합1+합2+합3+합4
+$(".sum").html(``)
+$(".sum").append(`<p>합계 ${합}원</p>`)
+}
 
-
-$(".clr").on("click", function(){
-    console.log("1");
-    $(".backet").html(``)
-    $(".backet").html(`<div class="backet" ondrop="drop(event)" ondragover="allowDrop(event)">
-    <span>장바구니(드래그 가능)</span>
-    <P></P>
-    </div>`)
-})
+// Modal을 가져옵니다.
+var modals = document.getElementsByClassName("modal");
+// Modal을 띄우는 클래스 이름을 가져옵니다.
+var btns = document.getElementsByClassName("btn");
+// Modal을 닫는 close 클래스를 가져옵니다.
+var spanes = document.getElementsByClassName("close");
+var funcs = [];
+ 
+// Modal을 띄우고 닫는 클릭 이벤트를 정의한 함수
+function Modal(num) {
+  return function() {
+    // 해당 클래스의 내용을 클릭하면 Modal을 띄웁니다.
+    btns[num].onclick =  function() {
+        modals[num].style.display = "block";
+        console.log(num);
+    };
+ 
+    // <span> 태그(X 버튼)를 클릭하면 Modal이 닫습니다.
+    spanes[num].onclick = function() {
+        modals[num].style.display = "none";
+    };
+  };
+}
+ 
+// 원하는 Modal 수만큼 Modal 함수를 호출해서 funcs 함수에 정의합니다.
+for(var i = 0; i < btns.length; i++) {
+  funcs[i] = Modal(i);
+}
+ 
+// 원하는 Modal 수만큼 funcs 함수를 호출합니다.
+for(var j = 0; j < btns.length; j++) {
+  funcs[j]();
+}
+ 
+// Modal 영역 밖을 클릭하면 Modal을 닫습니다.
+window.onclick = function(event) {
+  if (event.target.className == "modal") {
+      event.target.style.display = "none";
+  }
+};
