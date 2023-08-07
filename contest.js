@@ -104,7 +104,7 @@ $(".add").on("click", function(e){
     $(".sum").append(`<p>합계 ${합}원</p>`)
 
     })
-    // 인풋 상자 구현중
+    // 인풋 상자 구현중..
     $(".inp").on("click",function(){
         console.log("10")
         num= $(".inp").val()
