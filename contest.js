@@ -14,7 +14,8 @@ $.get("./store.json").then(function(data){
     <img src="${product[i].photo}" data-id="${a.id}">
     <h4 class="tt">${product[i].title}</h4>
     <h4${product[i].brand}</h4>
-    <h5>가격: ${product[i].price}</h5>
+    <h4 class="p">가격</h4>
+    <h5>${product[i].price}</h5>
     <button class="add" data-id="${a.id}">담기</button>
 </div>`
     $(".row").append(temp)
@@ -32,7 +33,8 @@ $.get("./store.json").then(function(data){
     <img src="${a.photo}">
     <h4 class="tt">${a.title}</h4>
     <h4>${a.brand}</h4>
-    <h5>가격: ${a.price}</h5>
+    <h4 class="p">가격</h4>
+    <h5>${a.price}</h5>
     <button class="add" data-id="${a.id}">담기</button>
 </div>`
         console.log(djqt);
@@ -82,61 +84,63 @@ $(".add").on("click", function(e){
     <img src="${a.photo}">
     <h4 class="tt">${a.title}</h4>
     <h4${a.brand}</h4>
-    <h5>가격: ${a.price}</h5>
-    <input type="number" class="inp" value="${num}">
+    <h4 class="p">가격</h4>
+    <h5>${a.price}</h5>
+    <input type="number" class="inp" value="${a.count}">
     <p></p>
     </div>`
-    num = a.count
-    
     $(".backet").append(temp)
-    if (a.id ==0) {
-        합1 = a.price * num
-    } else if (a.id ==1) {
-        합2 = a.price * num
-    } else if (a.id ==2) {
-        합3 = a.price * num
-    } else if (a.id ==3) {
-        합4 = a.price * num
-    }
-    합 =0
-    합 = 합1+합2+합3+합4
-    $(".sum").html(``)
-    $(".sum").append(`<p>합계 ${합}원</p>`)
-
+    // if (a.id ==0) {
+    //     합1 = a.price * num
+    // } else if (a.id ==1) {
+    //     합2 = a.price * num
+    // } else if (a.id ==2) {
+    //     합3 = a.price * num
+    // } else if (a.id ==3) {
+    //     합4 = a.price * num
+    // }
+    // 합 =0
+    // 합 = 합1+합2+합3+합4
+    // $(".sum").html(``)
+    // $(".sum").append(`<p>합계 ${합}원</p>`)
     })
+    금액합계()
+
     // 인풋 상자 구현중..
-    $(".inp").on("click",function(){
+    $(".inp").on("input",function(){
         console.log("10")
-        num= $(".inp").val()
-        $(".inp").html = num
-        cart.forEach((a,i) => {
-        $(".backet").append(temp)
-        var temp = `<div class="card-column" draggable="true" data-id="${a.id}" ondragstart="drag(event)">
-    <img src="${a.photo}">
-    <h4 class="tt">${a.title}</h4>
-    <h4${a.brand}</h4>
-    <h5>가격: ${a.price}</h5>
-    <input type="number" class="inp" value="${num}">
-    <p></p>
-    </div>`
-        if (a.id ==0) {
-            합1 = a.price * num
-        } else if (a.id ==1) {
-            합2 = a.price * num
-        } else if (a.id ==2) {
-            합3 = a.price * num
-        } else if (a.id ==3) {
-            합4 = a.price * num
-        }
-        합 =0
-        합 = 합1+합2+합3+합4
-        $(".sum").html(``)
-        $(".sum").append(`<p>합계 ${합}원</p>`)
-        })
+    //     num= $(".inp").val()
+    //     $(".inp").html = num
+        // cart.forEach((a,i) => {
+    //     $(".backet").append(temp)
+    //     var temp = `<div class="card-column" draggable="true" data-id="${a.id}" ondragstart="drag(event)">
+    // <img src="${a.photo}">
+    // <h4 class="tt">${a.title}</h4>
+    // <h4${a.brand}</h4>
+    // <h5>가격: ${a.price}</h5>
+    // <input type="number" class="inp" value="${num}">
+    // <p></p>
+    // </div>`
+    금액합계()
+        // if (a.id ==0) {
+        //     합1 = a.price * num
+        // } else if (a.id ==1) {
+        //     합2 = a.price * num
+        // } else if (a.id ==2) {
+        //     합3 = a.price * num
+        // } else if (a.id ==3) {
+        //     합4 = a.price * num
+        // }
+        // 합 =0
+        // 합 = 합1+합2+합3+합4
+        // $(".sum").html(``)
+        // $(".sum").append(`<p>합계 ${합}원</p>`)
+        // })
         
     })
 
         
+    
     // if (a.id ==0) {
     //     합1 = a.price * a.count
     // } else if (a.id ==1) {
@@ -210,61 +214,32 @@ function allowDrop(ev) {
     var temp = `<div class="card-column" draggable="true" data-id="${a.id}" ondragstart="drag(event)">
     <img src="${a.photo}">
     <h4 class="tt">${a.title}</h4>
-    <h4${a.brand}</h4>
-    <h5>가격: ${a.price}</h5>
-    <input type="number" class="inp" value="${num}">
+    <h4>${a.brand}</h4>
+    <h4 class="p">가격</h4>
+    <h5>${a.price}</h5>
+    <input type="number" class="inp" value="${a.count}">
     <P></P>
-</div>`
-
-num = a.count
-    $(".backet").append(temp)
-
-    
-            if (a.id ==0) {
-                합1 = a.price * num
-            } else if (a.id ==1) {
-                합2 = a.price * num
-            } else if (a.id ==2) {
-                합3 = a.price * num
-            } else if (a.id ==3) {
-                합4 = a.price * num
-            }
-            합 =0
-            합 = 합1+합2+합3+합4
-            $(".sum").html(``)
-            $(".sum").append(`<p>합계 ${합}원</p>`)
-        
-
-    })
-    $(".inp").on("click",function(){
-        console.log("10")
-        num= $(".inp").val()
-        $(".inp").html = num
-        cart.forEach((a,i) => {
-        $(".backet").append(temp)
-        var temp = `<div class="card-column" draggable="true" data-id="${a.id}" ondragstart="drag(event)">
-    <img src="${a.photo}">
-    <h4 class="tt">${a.title}</h4>
-    <h4${a.brand}</h4>
-    <h5>가격: ${a.price}</h5>
-    <input type="number" class="inp" value="${num}">
-    <p></p>
     </div>`
-        if (a.id ==0) {
-            합1 = a.price * num
-        } else if (a.id ==1) {
-            합2 = a.price * num
-        } else if (a.id ==2) {
-            합3 = a.price * num
-        } else if (a.id ==3) {
-            합4 = a.price * num
-        }
-        합 =0
-        합 = 합1+합2+합3+합4
-        $(".sum").html(``)
-        $(".sum").append(`<p>합계 ${합}원</p>`)
-        })
-        
+    $(".backet").append(temp)
+    
+})
+금액합계()
+    $(".inp").on("input",function(){
+        console.log("10")
+    //     num= $(".inp").val()
+    //     $(".inp").html = num
+    //     cart.forEach((a,i) => {
+    //     $(".backet").append(temp)
+    //     var temp = `<div class="card-column" draggable="true" data-id="${a.id}" ondragstart="drag(event)">
+    // <img src="${a.photo}">
+    // <h4 class="tt">${a.title}</h4>
+    // <h4${a.brand}</h4>
+    // <h5>가격: ${a.price}</h5>
+    // <input type="number" class="inp" value="${num}">
+    // <p></p>
+    // </div>`
+    // })
+    금액합계()    
     })
 }
 
@@ -285,20 +260,17 @@ num = a.count
 
 //금액 합계 function
 function 금액합계(){
-    
-if (a.id ==0) {
-    합1 = a.price * a.count
-} else if (a.id ==1) {
-    합2 = a.price * a.count
-} else if (a.id ==2) {
-    합3 = a.price * a.count
-} else if (a.id ==3) {
-    합4 = a.price * a.count
-}
-합 =0
-합 = 합1+합2+합3+합4
-$(".sum").html(``)
-$(".sum").append(`<p>합계 ${합}원</p>`)
+    합 =0
+    for(let i =0; i<$(".inp").length;i++){
+    var pricee = $(".inp").eq(i).siblings("h5").text()
+    var countt= $(".inp").eq(i).val()
+    합 += parseFloat(pricee * countt)
+    }
+    console.log(합)
+    console.log(pricee)
+    console.log(countt)
+    $(".sum").html("")
+    $(".sum").append(`<p>합계 ${합}원</p>`)
 }
 
 // Modal을 가져옵니다.
