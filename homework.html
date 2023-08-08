@@ -7,8 +7,17 @@
 </head>
 <body>
     <button id="버튼">버튼이에요</button>
-
+    <div style="display : none">모달창0</div>
+    <div style="display : none">모달창1</div>
+    <div style="display : none">모달창2</div>
+    
+    <button class="butto">버튼0</button>
+    <button class="butto">버튼1</button>
+    <button class="butto">버튼2</button>
 <script>
+  var 버튼들 = document.querySelectorAll('.butto');
+var 모달창들 = document.querySelectorAll('div');
+
         // 숙제1
         var 사람 = {
   name: '손흥민',
@@ -33,6 +42,91 @@ console.log(sum);};
 document.getElementById('버튼').addEventListener('click', function(){
     setTimeout(()=>{console.log(this.innerHTML)},1000)
   });
-  </script>
+// 변수 연습문제 4번
+let a = 1;
+var b = 2;
+window.a = 3;
+window.b = 4;
+console.log(a + b);
+
+// 변수 연습문제 5번
+
+// for (var i = 1; i < 6; i++) { 
+//   setTimeout(function() { console.log(i); }, i*1000 ); 
+// }
+// i=1
+// setTimeout(function() { console.log(i); }, 1000 ); 
+// i=2
+// setTimeout(function() { console.log(i); }, 2000 ); 
+// i=3
+// setTimeout(function() { console.log(i); }, 3000 ); 
+// i=4
+// setTimeout(function() { console.log(i); }, 4000 ); 
+// i=5
+// setTimeout(function() { console.log(i); }, 5000 ); 
+// i=6
+
+
+for (let i = 1; i < 6; i++) { 
+  setTimeout(function(){console.log(i)} , i*1000 ); 
+}
+
+// 변수 연습문제 6번
+
+for (let k = 0; k < 3; k++){
+  버튼들[k].addEventListener('click', function(){
+    모달창들[k].style.display = 'block'
+  });
+}
+
+// Template literals / tagged literals 연습문제 2개와 풀이
+
+// var 변수 = '손흥민';
+
+// function 해체분석기1(문자들, 변수들){
+//   console.log(문자들);
+//   console.log(변수들);
+// }
+// 해체분석기1`안녕하세요 ${변수} 입니다`;
+
+// var pants = 20
+// var socks = 100
+// function 해체분석기2(문자들,변수들1,변수들2){
+// console.log(문자들[1]+변수들1+문자들[0]+변수들2);
+// };
+// 해체분석기2` 바지 ${pants}양말 ${socks}`
+
+var pants = 0
+var socks = 100
+function 해체분석기(문자들,변수들1,변수들2){
+if(변수들1 ==0){
+  console.log(문자들[0]+"안팔아요 "+문자들[1]+변수들2)
+}
+}
+
+해체분석기` 바지 ${pants}양말 ${socks}`
+
+var 어레이 = ['hello', 'world'];
+console.log(어레이);
+console.log(...어레이);
+
+var 문자 = 'hello';
+console.log(문자);
+console.log(...문자);
+
+var aa= [1,2,3]
+var bb = [...aa,4]
+console.log(bb)
+
+var person = {
+    인사 : function(){
+      console.log(this.name + '안녕')
+    }
+}
+  
+var person2 = {
+    name : '손흥민'
+}
+</script>
 </body>
 </html>
