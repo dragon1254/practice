@@ -6,6 +6,7 @@ let 합2 =0
 let 합3 =0
 let 합4 =0
 let num =1
+let time =0
 
 $.get("./store.json").then(function(data){
     product = data.products
@@ -288,13 +289,15 @@ function Modal(num) {
     btns[num].onclick =  function() {
         modals[num].style.display = "block";
         console.log(num);
+        // time = new Date()
     };
  
     // <span> 태그(X 버튼)를 클릭하면 Modal이 닫습니다.
     spanes[num].onclick = function() {
         modals[num].style.display = "none";
     };
-  };
+    
+    };
 }
  
 // 원하는 Modal 수만큼 Modal 함수를 호출해서 funcs 함수에 정의합니다.
@@ -312,4 +315,24 @@ window.onclick = function(event) {
   if (event.target.className == "modal") {
       event.target.style.display = "none";
   }
+  if(event.target.className == "cls"){
+    for(let ii=0;ii<btns.length;ii++){
+    modals[ii].style.display = "none";
+    document.querySelectorAll(".modal")[ii].style.display="none"
+    }
+  }
+  if(event.target.className == "btn-success"){
+    location.reload(true);
+  }
 };
+      var canvas = document.getElementById('canvas'); 
+      var c = canvas.getContext('2d');
+      
+      c.font = '15px 굴림';
+      c.fillText(new Date(), 30, 20);
+      c.fillText(cart[0].title, 30, 100); 
+      c.fillText(cart[0].brand, 30, 120); 
+      c.fillText(cart[0].price, 30, 140); 
+      c.fillText(cart[0].countt, 30, 160); 
+      c.fillText('반갑습니다', 30, 180); 
+  

@@ -63,58 +63,41 @@
     <button class="clr">장바구니 리셋</button>
     <div>
       <p class="sum">총합 금액</p>
-      
-      <button class="buy" style="background-color: black; color: aliceblue;">구매하기</button>
-    </div>
+      <!-- 첫 번째 Modal을 여는 클래스 -->
+      <button class="btn"style="background-color: black; color: aliceblue;">구매하기</button>
+     </div>
 
-    <canvas id="canvas" width="350" height="350"></canvas> 
-<!-- 첫 번째 Modal을 여는 클래스 -->
-<h1 class="btn">MODAL_1</h1>
- 
+    
 <!-- 첫 번째 Modal -->
 <div class="modal">
 
   <!-- 첫 번째 Modal의 내용 -->
   <div class="modal-content">
     <span class="close">&times;</span>                         
-    <p>첫 번째 Modal</p>
+    <p>성함</p>
+    <input type="text">
+    <p>연락처</p>
+    <input type="number">
+    <p></p>
+    <!-- 두 번째 Modal을 여는 클래스 -->
+    <button class="btn btn-primary">입력완료</button>
+    <button class="cls">닫기</button>
+    <!-- 두 번째 Modal -->
+    <div class="modal">
+
+     <!-- 두 번째 Modal의 내용 -->
+     <div class="modal-content">
+     <span class="close">&times;</span>
+      <p style="font-size: 20px;">영수증</p>
+      <canvas id="canvas" width="500" height="350"></canvas> 
+      <button class="btn-success">완료</button>
+      <button class="cls">닫기</button>
+      </div>
+    </div>
   </div>
-</div>
 
-<hr>
-<!-- 두 번째 Modal을 여는 클래스 -->
-<h1 class="btn">MODAL_2</h1>
+     
 
-<!-- 두 번째 Modal -->
-<div class="modal">
-
-  <!-- 두 번째 Modal의 내용 -->
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <p>두 번째 Modal</p>
-  </div>
-</div>
-
-<hr>
-<!-- 세 번째 Modal을 여는 클래스 -->
-<h1 class="btn">MODAL_3</h1>
-
-<!-- 세 번째 Modal -->
-<div class="modal">
-
-  <!-- 세 번째 Modal의 내용 -->
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <p>세 번째 Modal</p>
-  </div>
-</div>
-    <script> 
-      var canvas = document.getElementById('canvas'); 
-      var c = canvas.getContext('2d');
-      c.font = '20px dotum';
-      c.fillText('안녕하세요', 30, 20);
-      c.fillText('반갑습니다', 30, 50); 
-    </script> 
 
     <script src="contest.js"></script>
 
