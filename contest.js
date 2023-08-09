@@ -14,9 +14,9 @@ $.get("./store.json").then(function(data){
     var temp = `<div class="card-column" draggable="true" data-id="${a.id}" ondragstart="drag(event)">
     <img src="${product[i].photo}" data-id="${a.id}">
     <h4 class="tt">${product[i].title}</h4>
-    <h4${product[i].brand}</h4>
+    <h4 class ="bb">${product[i].brand}</h4>
     <h4 class="p">가격</h4>
-    <h5>${product[i].price}</h5>
+    <h5 class="pp">${product[i].price}</h5>
     <button class="add" data-id="${a.id}">담기</button>
 </div>`
     $(".row").append(temp)
@@ -33,9 +33,9 @@ $.get("./store.json").then(function(data){
     var temq = `<div class="card-column" draggable="true" data-id="${a.id}" ondragstart="drag(event)">
     <img src="${a.photo}">
     <h4 class="tt">${a.title}</h4>
-    <h4>${a.brand}</h4>
+    <h4 class ="bb">${a.brand}</h4>
     <h4 class="p">가격</h4>
-    <h5>${a.price}</h5>
+    <h5 class="pp">${a.price}</h5>
     <button class="add" data-id="${a.id}">담기</button>
 </div>`
         console.log(djqt);
@@ -84,9 +84,9 @@ $(".add").on("click", function(e){
     var temp = `<div class="card-column" draggable="true" data-id="${a.id}" ondragstart="drag(event)">
     <img src="${a.photo}">
     <h4 class="tt">${a.title}</h4>
-    <h4${a.brand}</h4>
+    <h4 class ="bb">${a.brand}</h4>
     <h4 class="p">가격</h4>
-    <h5>${a.price}</h5>
+    <h5 class="pp">${a.price}</h5>
     <input type="number" class="inp" value="${a.count}">
     <p></p>
     </div>`
@@ -215,9 +215,9 @@ function allowDrop(ev) {
     var temp = `<div class="card-column" draggable="true" data-id="${a.id}" ondragstart="drag(event)">
     <img src="${a.photo}">
     <h4 class="tt">${a.title}</h4>
-    <h4>${a.brand}</h4>
+    <h4 class ="bb">${a.brand}</h4>
     <h4 class="p">가격</h4>
-    <h5>${a.price}</h5>
+    <h5 class="pp">${a.price}</h5>
     <input type="number" class="inp" value="${a.count}">
     <P></P>
     </div>`
@@ -325,14 +325,31 @@ window.onclick = function(event) {
     location.reload(true);
   }
 };
+
+
+
+let 성함 ="";
+let 연락처 = "";
+$(".name").on("input", function(){
+    성함 = $(".name").val();
+})
+$(".phone").on("input", function(){
+    연락처 = $(".phone").val();
+})
+
+
       var canvas = document.getElementById('canvas'); 
       var c = canvas.getContext('2d');
       
-      c.font = '15px 굴림';
+      c.font = '15px dotum';
       c.fillText(new Date(), 30, 20);
-      c.fillText(cart[0].title, 30, 100); 
-      c.fillText(cart[0].brand, 30, 120); 
-      c.fillText(cart[0].price, 30, 140); 
-      c.fillText(cart[0].countt, 30, 160); 
-      c.fillText('반갑습니다', 30, 180); 
+      c.fillText("구매자 : "+성함, 30, 100); 
+      c.fillText("연락처 : "+연락처, 30, 120); 
+      c.fillText($(".sum").html(), 30, 140);
+for(let iii =1;iii<5;iii++){
+      c.fillText($(".tt").eq(iii-1).html(), 30, iii*80 + 80); 
+      c.fillText($(".bb").eq(iii-1).html(), 30, iii*80 + 100); 
+      c.fillText($(".pp").eq(iii-1).html(), 30, iii*80 + 120); 
+      c.fillText($(".inp").eq(iii-1).val(), 30, iii*80 + 140); 
+}
   
