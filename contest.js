@@ -271,7 +271,7 @@ function 금액합계(){
     console.log(pricee)
     console.log(countt)
     $(".sum").html("")
-    $(".sum").append(`<p>합계 ${합}원</p>`)
+    $(".sum").append(`합계 ${합}원`)
 }
 
 // Modal을 가져옵니다.
@@ -329,27 +329,35 @@ window.onclick = function(event) {
 
 
 let 성함 ="";
-let 연락처 = "";
-$(".name").on("input", function(){
-    성함 = $(".name").val();
+let 연락처 = 0;
+$("#nn").on("input", function(){
+   성함 = $("#nn").val();
 })
-$(".phone").on("input", function(){
-    연락처 = $(".phone").val();
+$("#pp").on("input", function(){
+   연락처 = $("#pp").val();
 })
 
+// console.log(성함);
+// console.log(연락처);
+// console.log($(".sum").html());
+// console.log(cart[0]);
+// console.log(cart[1]);
+// console.log(cart[2]);
+// console.log(cart[3]);
+$("#final").on("click",function(){
 
       var canvas = document.getElementById('canvas'); 
       var c = canvas.getContext('2d');
       
       c.font = '15px dotum';
       c.fillText(new Date(), 30, 20);
-      c.fillText("구매자 : "+성함, 30, 100); 
-      c.fillText("연락처 : "+연락처, 30, 120); 
-      c.fillText($(".sum").html(), 30, 140);
-for(let iii =1;iii<5;iii++){
-      c.fillText($(".tt").eq(iii-1).html(), 30, iii*80 + 80); 
-      c.fillText($(".bb").eq(iii-1).html(), 30, iii*80 + 100); 
-      c.fillText($(".pp").eq(iii-1).html(), 30, iii*80 + 120); 
-      c.fillText($(".inp").eq(iii-1).val(), 30, iii*80 + 140); 
+      c.fillText("구매자 : " + 성함, 30, 100); 
+      c.fillText("연락처 : " + 연락처, 30, 120); 
+      c.fillText($(".sum").html(), 30, 140);      
+for(let iii =0;iii<4;iii++){
+      c.fillText(cart[iii].title, 30, iii*80 + 160); 
+      c.fillText(cart[iii].brand, 30, iii*80 + 180); 
+      c.fillText(cart[iii].price, 30, iii*80 + 200); 
+      c.fillText($(".inp").eq(iii).val(), 30, iii*80 + 220); 
 }
-  
+})
