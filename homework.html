@@ -151,6 +151,56 @@ alpha[a]++
   console.log(alpha);
 }
 글자세기("aabbbccdeeeee")
+
+// var 학생1 = { 
+//   name : 'Kim', 
+//   age : 15 ,
+//   sayH2: function(){
+//     console.log("안녕하세요"+this.name+"입니다")
+//   } 
+// };
+
+function 기계(이름,나이){
+  this.name = 이름;
+  this.age = 나이;
+  this.sayH2 = function(){
+    console.log("안녕하세요"+this.name+"입니다")
+}
+}
+
+var 학생1 = new 기계("kim",15);
+
+학생1.sayH2()
+
+
+
+function Product(nn,pp){
+  this.name = nn;
+  this.price = pp;
+  this.부가세 = function(){
+    console.log(this.price*0.1)
+  }
+};
+
+var product1 = new Product("shirts",50000);
+var product2 = new Product("pants", 60000);
+var product3 = new Product("underwear", 40000);
+
+function making(na,ag){
+  this.name = na;
+  this.age = ag;
+  this.sayHi = function(){
+    console.log("안녕 나는 "+this.name+"이야")
+  }
+}
+
+var 학생1 = new making("Kim",20)
+var 학생2 = new making("Park",21)
+var 학생3 = new making("Lee",22)
+
+
+
+
 </script>
 </body>
 </html>
