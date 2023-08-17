@@ -198,8 +198,17 @@ var 학생1 = new making("Kim",20)
 var 학생2 = new making("Park",21)
 var 학생3 = new making("Lee",22)
 
+class 부모 {
+  constructor(이름,나이){
+    this.name = 이름;
+    this.age = 나이;
+  }
+  sayHello(){
+    console.log("hello")
+  }
+}
 
-
+var 자식 = new 부모("lee",30)
 
 </script>
 </body>
