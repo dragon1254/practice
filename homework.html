@@ -14,6 +14,12 @@
     <button class="butto">버튼0</button>
     <button class="butto">버튼1</button>
     <button class="butto">버튼2</button>
+    <p>
+    </p>
+    <div style="text-align: center;">
+    <span style="font-family: 'Times New Roman', Times, serif;">Total click:<span id="countt"> 0 </span></span>
+    <button class="countclk">세기</button>
+  </div>
 <script>
   var 버튼들 = document.querySelectorAll('.butto');
 var 모달창들 = document.querySelectorAll('div');
@@ -306,6 +312,13 @@ let 신체정보 = {
   size: ["상의 Large", "바지 30인치"],
 };
 let {body:{height,weight},size:[cccc,dddd]} = 신체정보
+
+
+var clk=0
+document.querySelector(".countclk").addEventListener("click",function(){
+  clk++;
+  document.querySelector("#countt").innerHTML =clk;
+})
 
 </script>
 </body>
