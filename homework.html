@@ -21,7 +21,8 @@
     <span style="font-family: 'Times New Roman', Times, serif;">Total click:<span id="countt"> 0 </span></span>
     <button class="countclk">세기</button>
     <img id="test" src="https://codingapple1.github.io/kona.jpg">
-  </div>
+    </div>
+    <button id="any">아무버튼</button>
 <script>
   var 버튼들 = document.querySelectorAll('.butto');
 var 모달창들 = document.querySelectorAll('div');
@@ -340,19 +341,54 @@ chek.then(function(){
 //   console.log(결과)
 // });
 
+// 프로미스는 성공실패 분류함. 변수로 새로운 프로미스 만들고 
+// 그 프로미스가 성공이면 변수.then으로, 실패이면 변수.catch로 써서 각각 함수를 실행시킴
 var hi = new Promise(function(succ,reje){
+  // 아래는 데이터 추출하는데 성공하면 succ으로 -> 변수.then으로 
 $.get("https://codingapple1.github.io/hello.txt").done(function(결과){
   succ(결과)
 })
+
+  // 아래는 데이터 추출하는데 실패하면 reje으로 -> 변수.catch로 
 $.get("https://codingapple1.github.io/hello.txt").fail(function(안됨){
   reje(안됨)
 })
 })
-hi.then(function(결){
-  console.log(결);
-}).catch(function(){
+// 데이터 추출에 성공하여 .then으로 왔고 여기에서 다시 새로운 데이터 추출하기 위해 새 변수 지정
+hi.then(function(결과){
+  console.log(결과);
+var hi2 = new Promise(function(succe,rejec){
+  $.get(" https://codingapple1.github.io/hello2.txt").done(function(결과2){
+    succe(결과2);
+  })
+});
+// 아직 새 변수 안임. 새 promise 변수 만들기 위해 실패쪽도 만들어주는 중임
+  $.get(" https://codingapple1.github.io/hello2.txt").fail(function(){
+    rejec()
+  })
+// 변수 만들고 닫아준 후 hi.then의 결과에 return을 써서 hi2를 넣어줌
+// 그러면 이제 hi.then.then을 h2.then으로 변환할 수 있음(then.then은 없는 문법이기 때문에 변환)
+  return hi2;
+}).then(function(결과2){
+  console.log(결과2);
+})
+  .catch(function(){
   console.log("로딩 실패함");
 })
+
+async function 클릭(){
+  var 클릭하기 = new Promise(function(a,b){
+    document.querySelector("#any").addEventListener("click",function(){
+      a();
+    });
+  });
+  try { var 결과 = await 클릭하기;
+  console.log("성공했어요");
+}
+  catch {console.log("실패했어요")}
+}
+클릭()
+
 </script>
 </body>
 </html>
