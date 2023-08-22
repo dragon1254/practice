@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 </head>
 <body>
     <button id="버튼">버튼이에요</button>
@@ -19,6 +20,7 @@
     <div style="text-align: center;">
     <span style="font-family: 'Times New Roman', Times, serif;">Total click:<span id="countt"> 0 </span></span>
     <button class="countclk">세기</button>
+    <img id="test" src="https://codingapple1.github.io/kona.jpg">
   </div>
 <script>
   var 버튼들 = document.querySelectorAll('.butto');
@@ -319,7 +321,38 @@ document.querySelector(".countclk").addEventListener("click",function(){
   clk++;
   document.querySelector("#countt").innerHTML =clk;
 })
+var chek = new Promise(function(suc,rej){
+document.querySelector("#test").addEventListener("load", function(){
+  suc()
+})
+document.querySelector("#test").addEventListener("error", function(){
+  rej()
+})
+})
+chek.then(function(){
+  console.log("로딩 성공");
+}).catch(function(){
+  console.log("로딩 실패");
+})
 
+
+// $.get('https://codingapple1.github.io/hello.txt').done(function(결과){
+//   console.log(결과)
+// });
+
+var hi = new Promise(function(succ,reje){
+$.get("https://codingapple1.github.io/hello.txt").done(function(결과){
+  succ(결과)
+})
+$.get("https://codingapple1.github.io/hello.txt").fail(function(안됨){
+  reje(안됨)
+})
+})
+hi.then(function(결){
+  console.log(결);
+}).catch(function(){
+  console.log("로딩 실패함");
+})
 </script>
 </body>
 </html>
