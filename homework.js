@@ -416,8 +416,11 @@ for(var itemm of products){
 }
 console.log(products)
 
-// for (let item of products){
-//   for(let keys in item){
-//     if(isNaN(parseInt(keys.slice(-1)))==false){}
-//   }
-// }
+var personn = {name: "lee"};
+
+var tall = Symbol("키")
+personn[tall] =180;
+
+for(var ta in personn){
+  console.log(ta);
+}
