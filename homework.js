@@ -362,3 +362,62 @@ async function 클릭(){
   catch {console.log("실패했어요")}
 }
 클릭()
+
+
+// for in 반복문은 위를 써서 descriptor 했더니 enuerable이 true인 것만 출력함
+// 부모의 prototype도 반복함
+// for in 반복문은 오브젝트 내 내용들 뽑을 때 사용
+// for of  반복문은 array, 스트링 등일 때 사용
+
+var objectt = { name: "kim", age: 30}
+
+for (var key in objectt) {
+
+  console.log(objectt[key])
+}
+Object.getOwnPropertyDescriptor(objectt,"name")
+
+// 이건 그냥 for of 이용한 구구단 연습문제
+// let 데이터 = [1,2,3,4,5,6,7,8,9] 
+
+// for (var 구구단1 of 데이터) {
+//   for (var 구구단2 of 데이터) {
+//   console.log(구구단1*구구단2);
+//   }
+// }
+
+var products = [
+  {
+    name1 : 'chair',
+    price1 : 7000,
+  },
+  {
+    name2 : 'sofa',
+    price : 5000,
+  },
+  {
+    name1 : 'desk',
+    price3 : 9000,
+  },
+]; 
+let newKeys;
+let newValue;
+
+for(var itemm of products){
+  for(var keys in itemm){
+  // 오브젝트 안의 마지막 문자가 숫자이면 숫자 없애기
+  if(isNaN(parseInt(keys.slice(-1))) == false){
+    let newValue = itemm[keys];   // slice는 원본을 훼손하지 않으므로 원본 데이터를 따로 저장하고
+    let newKeys = keys.slice(0,-1); // 문자부분만 slice로 잘라내기
+    itemm[newKeys] = newValue;   // 새 key 값도 저장하여 오브젝트안에 새로 넣기
+    delete itemm[keys]; //새로key와 value를 저장했으니 기존것 삭제
+  }
+  }
+}
+console.log(products)
+
+// for (let item of products){
+//   for(let keys in item){
+//     if(isNaN(parseInt(keys.slice(-1)))==false){}
+//   }
+// }
