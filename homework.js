@@ -424,3 +424,27 @@ personn[tall] =180;
 for(var ta in personn){
   console.log(ta);
 }
+
+
+
+// 컴포넌트 - js 내에서 커스텀 html만들기
+
+// 클래스 작성
+class 클래스 extends HTMLElement {
+
+  connectedCallback() {
+     this.innerHTML = '<label>이름을 입력하쇼</label><input>'
+  }
+  // 어떤 attribute가 변경되는지 감지하는 코드
+  static get observedAttributes() {
+    return ['name']
+  }
+    // attributes가 변경됄때 실행하는 코드
+  attributeChangedCallback() {
+    // (attribute 변경시 실행할 코드)
+  }
+}
+
+// html에서 커스텀 인풋이라 하면 작성된 클래스를 넣으라는 명령
+customElements.define("custom-input", 클래스);
+
